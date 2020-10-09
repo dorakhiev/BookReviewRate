@@ -1,11 +1,11 @@
 # Creates table Users
-CREATE EXTERNAL TABLE users (userId STRING, location STRING, age INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' LOCATION '/user/cloudera/userbookrating/users';
+CREATE EXTERNAL TABLE IF NOT EXISTS users (userId STRING, location STRING, age INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' LOCATION '/user/cloudera/userbookrating/users';
 
 # Creates table books
-CREATE EXTERNAL TABLE books (isbn STRING, title STRING, author STRING, yearPublication INT, publisher STRING, imageUrlSmall STRING, imageUrlMedium STRING, imageUrlLarge STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' LOCATION '/user/cloudera/userbookrating/books';
+CREATE EXTERNAL TABLE IF NOT EXISTS books (isbn STRING, title STRING, author STRING, yearPublication INT, publisher STRING, imageUrlSmall STRING, imageUrlMedium STRING, imageUrlLarge STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' LOCATION '/user/cloudera/userbookrating/books';
 
 # Creates table bookratings
-CREATE EXTERNAL TABLE bookratings (userId STRING, isbn STRING, bookRating INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' LOCATION '/user/cloudera/userbookrating/bookratings';
+CREATE EXTERNAL TABLE IF NOT EXISTS bookratings (userId STRING, isbn STRING, bookRating INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' LOCATION '/user/cloudera/userbookrating/bookratings';
 
 # Shows 10 books with user rating greater than 4 and order by title.
 SELECT b.isbn, b.title FROM books b JOIN bookratings br ON (b.isbn = br.isbn) WHERE br.bookRating > 4 ORDER BY b.title LIMIT 10;
