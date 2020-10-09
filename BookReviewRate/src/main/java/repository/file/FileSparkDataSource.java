@@ -5,6 +5,13 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 import repository.SparkDataSource;
 
+/**
+ * 
+ * Class {@link FileSparkDataSource} is used to handle file input data source. 
+ * 
+ * @author Dora
+ *
+ */
 public class FileSparkDataSource implements SparkDataSource {
 	
 	private JavaSparkContext javaSparkContext;
